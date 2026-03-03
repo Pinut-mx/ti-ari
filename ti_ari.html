@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ti?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    #boton {
+      padding: 20px 40px;
+      font-size: 2rem;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      z-index: 2;
+    }
+
+    #boton:hover {
+      transform: scale(1.1);
+    }
+
+    #mensaje {
+      position: absolute;
+      font-size: 3rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 2;
+    }
+
+    .corazon {
+      position: absolute;
+      color: white;
+      font-size: 20px;
+      animation: flotar 5s linear infinite;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="boton">Ti?</button>
+  <div id="mensaje">Te amo Ari</div>
+
+  <script>
+    const boton = document.getElementById('boton');
+    const mensaje = document.getElementById('mensaje');
+
+    boton.addEventListener('click', () => {
+      boton.style.display = 'none';
+      mensaje.style.opacity = '1';
+      crearCorazones();
+    });
+
+    function crearCorazones() {
+      for (let i = 0; i < 150; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.innerHTML = '❤';
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.top = Math.random() * 100 + 'vh';
+        corazon.style.fontSize = (Math.random() * 30 + 10) + 'px';
+        corazon.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(corazon);
+      }
+    }
+  </script>
+
+</body>
+</html>
